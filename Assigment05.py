@@ -24,13 +24,12 @@ strChoice = "" # A Capture the user option selection
 # -- Processing -- #
 # Step 1 - When the program starts, load the any data you have
 # in a text file called ToDoList.txt into a python list of dictionaries rows (like Lab 5-2)
-# TODO: Add COMMENTS Here
-strFile = open(objFile, "r")
-for row in strFile:
-    lstRow = row.split(",")  # returns a list
-    dicRow = {"Task": lstRow[0], "Priority": lstRow[1].strip()}
-    lstTable.append(dicRow)
-strFile.close()
+strFile = open(objFile, "r")                                     # open ToDoList.txt file
+for row in strFile:                                              # extract data from file
+    lstRow = row.split(",")                                      # returns a list
+    dicRow = {"Task": lstRow[0], "Priority": lstRow[1].strip()}  # format data into dictionary item
+    lstTable.append(dicRow)                                      # add dictionary item to list
+strFile.close()                                                  # close ToDoList.txt file
 
 # -- Input/Output -- #
 # Step 2 - Display a menu of choices to the user
@@ -53,14 +52,14 @@ while (True):
     elif (strChoice.strip() == '2'):
         strTask = input("State the task: ")                   # prompt user for task
         strPriority = input("State the Priority level: ")     # prompt user for priority level
-        newItem = {"Task": strTask, "Priority": strPriority}  # organize inputs into dictionary items
+        newItem = {"Task": strTask, "Priority": strPriority}  # organize inputs into dictionary item
         lstTable.append(newItem)                              # add task/priority to existing list
         continue
     # Step 5 - Remove a new item from the list/Table
     elif (strChoice.strip() == '3'):
         strFindTerm = input("What task do you want to delete?: ")  # prompt user for task to delete
         boolMatch = False  # create a bool to track status of search for task to delete
-        for objRow in lstTable:
+        for objRow in lstTable:                                        # search each row
             if objRow['Task'] == strFindTerm:                          # task to delete was found
                 lstTable.remove(objRow)                                # delete task/priority from list
                 print("Deleted task \"", strFindTerm, "\" from list")  # notify user of status
