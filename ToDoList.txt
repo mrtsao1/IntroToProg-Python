@@ -1,3 +1,0 @@
-learn to type,high
-buy groceries,medium
-mow the lawn,low
